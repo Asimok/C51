@@ -1,5 +1,5 @@
 /*
- * 单片机发送两个字符给PC机 波特率 9600Mhz SMOD=0 fosc=11.0592Mhz
+ * 单片机发送字符串 波特率 9600Mhz SMOD=0 fosc=11.0592Mhz
  * (SMOD=1 时 PCON=0X80 要写上)
  *计算初值
  *波特率=（2^SMOD/32）*(fosc/((256-X)*12))
@@ -28,10 +28,10 @@ void init()
 }
 void sendbyte(uc dat)
 {
-   //发送单个字符给PC机
-   SBUF=dat;
-   while (!TI);//TI=0 时一直等待
-   TI=0;//手动将发送中断标志位清零
+    //发送单个字符给PC机
+    SBUF=dat;
+    while (!TI);//TI=0 时一直等待
+    TI=0;//手动将发送中断标志位清零
 }
 void sendstr(uc *s)
 {
