@@ -4,7 +4,8 @@
 *波特率=（2^SMOD/32）*(fosc/((256-X)*12))
 *
 * */
-#include "reg52.h"
+#include "../reg52.h"
+unsigned  char temp;
 //初始化串口
 void init()
 {
@@ -22,25 +23,24 @@ void init()
     //SCON结构 SM1 SM1 SM2 REN TB8 RB8 TI RI
     //也可以 SCON=0X50
 
-    //中断方式
-    EA=1;
-    ES=1;
+    //查询方式
+
 }
 void main()
 {
+
     init();
-    while(1);
+    while(1)
+    {
+
+        while(RI)
+        {
+            RI=0;//将接收中断标志位 手动清零
+            temp=SBUF;//将SBUF中的数据取出来
+            P0=SBUF;
+
+        }
+    }
 
 
-}
-void serial() interrupt 4
-{
-unsigned  char temp;
-if(RI)
-{
-RI=0;//将接收中断标志位 手动清零
-temp=SBUF;//将SBUF中的数据取出来
-P0=SBUF;
-
-}
 }

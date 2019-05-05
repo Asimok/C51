@@ -5,7 +5,7 @@
  *波特率=（2^SMOD/32）*(fosc/((256-X)*12))
  *
  * */
-#include "reg52.h"
+#include "../reg52.h"
 #define  uc unsigned  char
 //初始化串口
 void init()

@@ -5,8 +5,9 @@
  *波特率=（2^SMOD/32）*(fosc/((256-X)*12))
  *
  * */
-#include "reg52.h"
+#include "../reg52.h"
 #define  uc unsigned  char
+#define  ui unsigned  int
 //初始化串口
 void init()
 {
@@ -25,6 +26,12 @@ void init()
 
     //使用查询方式
 
+}
+void delay(ui z)
+{
+    ui a,b;
+    for ( a=z;a>0;a--)
+        for( b=110;b>0;b--);
 }
 void sendbyte(uc dat)
 {
@@ -45,7 +52,9 @@ void sendstr(uc *s)
 void main()
 {
     init();
-    sendstr("2个字符");
+    sendstr("第1个字符");
+    delay(500);
+    sendstr("第2个字符");
     while (1);
 }
 

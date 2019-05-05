@@ -2,7 +2,7 @@
  * PC机发送一个字符给单片机 单片机收到后再发给PC机
  *
  * */
-#include "reg52.h"
+#include "../reg52.h"
 #define uc unsigned char
 //初始化串口
 void init()
