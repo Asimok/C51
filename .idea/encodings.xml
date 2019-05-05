@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://E:/STM51单片机教程/5--实验程序/基础实验例程/实验29：LCD1602液晶/程序/lcd.c" charset="GBK" />
+    <file url="file://E:/STM51单片机教程/5--实验程序/基础实验例程/实验29：LCD1602液晶/程序/lcd.h" charset="GBK" />
+    <file url="file://E:/STM51单片机教程/5--实验程序/基础实验例程/实验29：LCD1602液晶/程序/main.c" charset="GBK" />
     <file url="file://G:/51Project/串口实验_1_串口LED/serial.c" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/串口实验/fasongzifu.c" charset="GBK" />
   </component>
 </project>
