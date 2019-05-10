@@ -31,8 +31,8 @@ void main()
     init();
     while(1);
 
-
 }
+
 void serial() interrupt 4
 {
 unsigned  char temp;

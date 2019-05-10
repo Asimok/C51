@@ -18,6 +18,7 @@ void init()
 
     SM0=0;//使用SCON方式一
     SM1=1;
+
     REN=1;//启动串口接收数据
 
     //SCON结构 SM1 SM1 SM2 REN TB8 RB8 TI RI
@@ -37,8 +38,7 @@ void main()
         {
             RI=0;//将接收中断标志位 手动清零
             temp=SBUF;//将SBUF中的数据取出来
-            P0=SBUF;
-
+            P0=temp;
         }
     }
 

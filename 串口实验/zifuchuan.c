@@ -45,7 +45,7 @@ void sendstr(uc *s)
 void main()
 {
     init();
-    sendstr("2个字符");
+    sendstr("测试字符串字符");
     while (1);
 }
 

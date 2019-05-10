@@ -52,9 +52,9 @@ void sendstr(uc *s)
 void main()
 {
     init();
-    sendstr("第1个字符");
+    sendstr("A");
     delay(500);
-    sendstr("第2个字符");
+    sendstr("B");
     while (1);
 }
 

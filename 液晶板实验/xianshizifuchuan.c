@@ -5,13 +5,13 @@
 #define  uc unsigned char
 #define ui unsigned int
 //学校板子
-//sbit rs=P2^4;
-//sbit rw=P2^5;
-//sbit en=P2^6;
-//自己板子
-sbit rs=P2^6;
+sbit rs=P2^4;
 sbit rw=P2^5;
-sbit en=P2^7;
+sbit en=P2^6;
+//自己板子
+//sbit rs=P2^6;
+//sbit rw=P2^5;
+//sbit en=P2^7;
 void delay(ui z)
 {
     ui a,b;
@@ -40,7 +40,7 @@ void init()
 {
     write_com(0x38);//命令6 8位数据接口 2行显示 5*7点阵
     write_com(0x0f);//命令4 开显示 有光标 闪烁
-    write_com(0x06);//命令3 读或写一个字符后地址指针加一 整屏显示不移动
+    write_com(0x05);//命令3 读或写一个字符后地址指针加一 整屏显示不移动
     write_com(0x01);//命令1 清屏
 }
 void display(uc *s)
@@ -50,7 +50,7 @@ void display(uc *s)
     while(*s!='\0')
     {
         dat=*s;
-        delay(100);
+        delay(500);
         //write_com(0x18);  //命令5 字符左移
         write_dat(dat);
         s++;
@@ -61,9 +61,9 @@ void main()
     init();
     //显示在第一行  0x00-0x0f
     write_com(0x80+0x00);
-    display("chun");
+    display("hello world!");
     //显示在第二行  0x40-0x4f
     write_com(0x80+0x40);
-    display("shuang like you");
+    display("today is sunday!!!");
     while(1);
 }
