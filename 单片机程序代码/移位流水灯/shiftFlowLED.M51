@@ -1,0 +1,99 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/15/2019  19:45:41  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+G:\KEIL_V51\C51\BIN\BL51.EXE shiftFlowLED.obj TO shiftFlowLED
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  shiftFlowLED.obj (SHIFTFLOWLED)
+  G:\KEIL_V51\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  shiftFlowLED (SHIFTFLOWLED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     001EH     UNIT         ?PR?_DELAY?SHIFTFLOWLED
+            CODE    081EH     001EH     UNIT         ?PR?MAIN?SHIFTFLOWLED
+            CODE    083CH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   shiftFlowLED (SHIFTFLOWLED)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?SHIFTFLOWLED
+
+?PR?MAIN?SHIFTFLOWLED
+  +--> ?PR?_DELAY?SHIFTFLOWLED
+
+
+
+SYMBOL TABLE OF MODULE:  shiftFlowLED (SHIFTFLOWLED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SHIFTFLOWLED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:0800H         PUBLIC        _delay
+  C:081EH         PUBLIC        main
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        z
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/15/2019  19:45:41  PAGE 2
+
+
+  D:0006H         SYMBOL        a
+  D:0004H         SYMBOL        b
+  -------         ENDDO         
+  C:0800H         LINE#         4
+  C:0800H         LINE#         5
+  C:0800H         LINE#         7
+  C:0809H         LINE#         8
+  C:081DH         LINE#         9
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:081EH         LINE#         10
+  C:081EH         LINE#         11
+  C:081EH         LINE#         13
+  C:0821H         LINE#         14
+  C:0821H         LINE#         15
+  C:0821H         LINE#         16
+  C:0823H         LINE#         17
+  C:0823H         LINE#         18
+  C:082AH         LINE#         19
+  C:0830H         LINE#         20
+  C:0833H         LINE#         21
+  C:0837H         LINE#         22
+  C:083AH         LINE#         23
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SHIFTFLOWLED
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003CH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=75
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,17 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\单片机程序代码\6.独立按键的延时抖动\singlekey.uvproj
+Project File Date:  04/18/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling singlekey.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?SINGLEKEY
+Program Size: data=10.0 xdata=0 code=232
+creating hex file from "singlekey"...
+"singlekey" - 0 Error(s), 1 Warning(s).

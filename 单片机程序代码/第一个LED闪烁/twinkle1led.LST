@@ -1,0 +1,43 @@
+C51 COMPILER V9.01   TWINKLE1LED                                                           03/24/2019 13:10:14 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE TWINKLE1LED
+OBJECT MODULE PLACED IN twinkle1led.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE twinkle1led.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include  <reg51.h>
+   2          #define ui unsigned int 
+   3          void delay(ui x)
+   4          {
+   5   1              ui a,b;
+   6   1              for(a=x;a>0;a--)
+   7   1                      for(b=110;b>0;b--);
+   8   1      }
+   9          
+  10          void main()
+  11          {
+  12   1              while(1)
+  13   1              {
+  14   2                      P0=0XFE;
+  15   2                      delay(1000);
+  16   2                      P0=0xFF;
+  17   2                      delay(1000);
+  18   2              }
+  19   1              
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     52    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

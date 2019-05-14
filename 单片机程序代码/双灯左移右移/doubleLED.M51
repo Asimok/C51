@@ -1,0 +1,125 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/24/2019  13:19:13  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL 4\C51\BIN\BL51.EXE doubleLED.obj TO doubleLED
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  doubleLED.obj (DOUBLELED)
+  D:\KEIL 4\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  doubleLED (DOUBLELED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0063H     UNIT         ?PR?MAIN?DOUBLELED
+            CODE    0066H     0022H     UNIT         ?PR?_DELAY?DOUBLELED
+            CODE    0088H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   doubleLED (DOUBLELED)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?DOUBLELED
+
+?PR?MAIN?DOUBLELED
+  +--> ?PR?_DELAY?DOUBLELED
+
+
+
+SYMBOL TABLE OF MODULE:  doubleLED (DOUBLELED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DOUBLELED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:006AH         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/24/2019  13:19:13  PAGE 2
+
+
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  C:0066H         SYMBOL        L?0023
+  -------         PROC          L?0022
+  -------         ENDPROC       L?0022
+  C:0066H         SYMBOL        L?0023
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        a
+  -------         DO            
+  D:0006H         SYMBOL        b
+  D:0004H         SYMBOL        c
+  -------         ENDDO         
+  C:006AH         LINE#         4
+  C:006AH         LINE#         5
+  C:006AH         LINE#         7
+  C:0073H         LINE#         8
+  C:0087H         LINE#         9
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0082H         SYMBOL        i
+  D:0002H         SYMBOL        temp
+  -------         ENDDO         
+  C:0003H         LINE#         11
+  C:0003H         LINE#         12
+  C:0003H         LINE#         16
+  C:0003H         LINE#         17
+  C:0003H         LINE#         18
+  C:0007H         LINE#         19
+  C:0009H         LINE#         20
+  C:000CH         LINE#         21
+  C:000CH         LINE#         23
+  C:000FH         LINE#         24
+  C:0016H         LINE#         25
+  C:0019H         LINE#         26
+  C:001BH         LINE#         27
+  C:0024H         LINE#         31
+  C:0028H         LINE#         32
+  C:002AH         LINE#         34
+  C:002FH         LINE#         35
+  C:002FH         LINE#         37
+  C:0032H         LINE#         38
+  C:0039H         LINE#         39
+  C:003CH         LINE#         40
+  C:003EH         LINE#         41
+  C:0047H         LINE#         43
+  C:0057H         LINE#         45
+  C:0057H         LINE#         46
+  C:005AH         LINE#         47
+  C:005DH         LINE#         48
+  C:0060H         LINE#         49
+  C:0063H         LINE#         50
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        DOUBLELED
+
+Program Size: data=9.0 xdata=0 code=148
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/24/2019  13:19:13  PAGE 3
+
+
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

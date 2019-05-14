@@ -1,0 +1,56 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\单片机程序代码\主程序第一个LED亮下降沿触发外部中断1LED1灭2亮\INT1_LED1-2.uvproj
+Project File Date:  04/04/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+compiling INT1_LED1-2.c...
+linking...
+Program Size: data=14.0 xdata=0 code=149
+"INT1_LED1-2" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling INT1_LED1-2.c...
+INT1_LED1-2.C(21): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?INT1_LED1_2
+Program Size: data=11.0 xdata=0 code=68
+"INT1_LED1-2" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling INT1_LED1-2.c...
+INT1_LED1-2.C(21): warning C280: 'i': unreferenced local variable
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?INT1_LED1_2
+Program Size: data=11.0 xdata=0 code=68
+"INT1_LED1-2" - 0 Error(s), 2 Warning(s).
+Build target 'Target 1'
+compiling INT1_LED1-2.c...
+INT1_LED1-2.C(15): warning C280: 'i': unreferenced local variable
+linking...
+Program Size: data=11.0 xdata=0 code=38
+"INT1_LED1-2" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling INT1_LED1-2.c...
+linking...
+Program Size: data=9.0 xdata=0 code=38
+"INT1_LED1-2" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling INT1_LED1-2.c...
+linking...
+Program Size: data=9.0 xdata=0 code=38
+creating hex file from "INT1_LED1-2"...
+"INT1_LED1-2" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling INT1_LED1-2.c...
+linking...
+Program Size: data=9.0 xdata=0 code=75
+creating hex file from "INT1_LED1-2"...
+"INT1_LED1-2" - 0 Error(s), 0 Warning(s).

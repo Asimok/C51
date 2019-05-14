@@ -1,0 +1,15 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\程序代码\第一个LED闪烁\twinkle1led.uvproj
+Project File Date:  03/21/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling twinkle1led.c...
+linking...
+Program Size: data=9.0 xdata=0 code=67
+creating hex file from "twinkle1led"...
+"twinkle1led" - 0 Error(s), 0 Warning(s).

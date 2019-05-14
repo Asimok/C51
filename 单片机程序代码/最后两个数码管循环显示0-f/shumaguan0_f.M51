@@ -1,0 +1,110 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/29/2019  15:43:21  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL 4\C51\BIN\BL51.EXE shumaguan0_f.obj TO shumaguan0_f RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  shumaguan0_f.obj (SHUMAGUAN0_F)
+  D:\KEIL 4\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  shumaguan0_f (SHUMAGUAN0_F)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0029H     UNIT         ?PR?MAIN?SHUMAGUAN0_F
+            CODE    002CH     001EH     UNIT         ?PR?_DELAY?SHUMAGUAN0_F
+            CODE    004AH     0010H     UNIT         ?CO?SHUMAGUAN0_F
+            CODE    005AH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   shumaguan0_f (SHUMAGUAN0_F)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?SHUMAGUAN0_F
+
+?PR?MAIN?SHUMAGUAN0_F
+  +--> ?PR?_DELAY?SHUMAGUAN0_F
+  +--> ?CO?SHUMAGUAN0_F
+
+
+
+SYMBOL TABLE OF MODULE:  shumaguan0_f (SHUMAGUAN0_F)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SHUMAGUAN0_F
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:004AH         PUBLIC        table
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/29/2019  15:43:21  PAGE 2
+
+
+  D:00A8H         PUBLIC        IE
+  C:002CH         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        main
+  B:00A0H.0       PUBLIC        dula
+  B:00A0H.1       PUBLIC        wela
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        z
+  -------         DO            
+  D:0006H         SYMBOL        a
+  D:0004H         SYMBOL        b
+  -------         ENDDO         
+  C:002CH         LINE#         21
+  C:002CH         LINE#         22
+  C:002CH         LINE#         24
+  C:0035H         LINE#         25
+  C:0049H         LINE#         26
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0002H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         28
+  C:0003H         LINE#         29
+  C:0003H         LINE#         30
+  C:0003H         LINE#         34
+  C:0005H         LINE#         35
+  C:0008H         LINE#         36
+  C:000AH         LINE#         38
+  C:000AH         LINE#         39
+  C:000AH         LINE#         40
+  C:000DH         LINE#         41
+  C:000DH         LINE#         42
+  C:0014H         LINE#         43
+  C:0016H         LINE#         44
+  C:001DH         LINE#         45
+  C:001FH         LINE#         46
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SHUMAGUAN0_F
+
+Program Size: data=9.0 xdata=0 code=102
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

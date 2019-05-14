@@ -1,0 +1,3 @@
+"serial_led_search.obj" 
+TO "serial_led_search" 
+RAMSIZE(256) 

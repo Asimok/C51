@@ -1,0 +1,73 @@
+C51 COMPILER V9.01   SHUMAGUAN0_F                                                          03/29/2019 15:43:21 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SHUMAGUAN0_F
+OBJECT MODULE PLACED IN shumaguan0_f.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE shumaguan0_f.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          最后两个数码管显示0~F
+   3          */
+   4          
+   5          #include "reg52.h"
+   6          #define ui unsigned int
+   7          
+   8          sbit wela =P2^1;//定义引脚
+   9          sbit dula =P2^0;
+  10          
+  11          /*------------------------------------------------
+  12                             查表表格
+  13          ------------------------------------------------*/
+  14          unsigned char code table[]={    0x3F,0x06,0x5B,0x4F,
+  15                                                                                                                                          0x66,0x6D,0x7d,0x07,
+  16                                                                                                                                  0x7f,0x6f,0x77,0x7C,
+  17                                                                                                                                  0x39,0x5E,0x79,0x71 }   ;
+  18                                                                                                                                          //共阴数码管0~F
+  19                                                          
+  20          
+  21          void delay(ui z)
+  22          {
+  23   1          ui a,b;
+  24   1          for(a=z;a>0;a--)
+  25   1              for(b=110;b>0;b--);
+  26   1      } 
+  27          
+  28          void main()
+  29          {
+  30   1           ui i=0;
+  31   1              //位选数码管0011 1111
+  32   1              //0选中最后两个数码管  低电平选中数码管 从左到右最左边的为最低位 即第一个数码管为最低位
+  33   1              //低位--->高位
+  34   1              wela=1;//送位码
+  35   1              P0=0x3f;
+  36   1              wela=0;
+  37   1      
+  38   1              while(1)
+  39   1              {       
+  40   2              for(i=0;i<16;i++)   
+  41   2                  {
+  42   3                       delay(1000);
+  43   3                                       dula=1;//送段码
+  44   3                           P0=table[i];
+  45   3                                       dula=0;
+  46   3                  }
+  47   2              }
+  48   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     71    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.01   SHUMAGUAN0_F                                                          03/29/2019 15:43:21 PAGE 2   
+
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,29 @@
+C51 COMPILER V9.54   1357LEDS                                                              03/15/2019 19:45:18 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE 1357LEDS
+OBJECT MODULE PLACED IN 1357LEDS.OBJ
+COMPILER INVOKED BY: G:\kEIL_V51\C51\BIN\C51.EXE 1357LEDS.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          
+   3          void main()
+   4          {
+   5   1        P0=0X55;
+   6   1      }          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      4    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

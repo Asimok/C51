@@ -1,0 +1,163 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/11/2019  22:14:59  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL 4\C51\BIN\BL51.EXE smg_123.obj TO smg_123 RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  smg_123.obj (SMG_123)
+  D:\KEIL 4\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL 4\C51\LIB\C51S.LIB (?C?UIDIV)
+  D:\KEIL 4\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  smg_123 (SMG_123)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0005H     UNIT         ?DT?SMG_123
+            IDATA   000DH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0055H     UNIT         ?C?LIB_CODE
+            CODE    00E4H     003BH     UNIT         ?PR?_DISPLAY?SMG_123
+            CODE    011FH     0035H     UNIT         ?PR?_SEPARATE?SMG_123
+            CODE    0154H     0024H     UNIT         ?PR?_DELAY?SMG_123
+            CODE    0178H     0012H     UNIT         ?PR?MAIN?SMG_123
+            CODE    018AH     0010H     UNIT         ?CO?SMG_123
+            CODE    019AH     0005H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   smg_123 (SMG_123)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?SMG_123
+  +--> ?C_INITSEG
+
+?PR?MAIN?SMG_123
+  +--> ?PR?_SEPARATE?SMG_123
+  +--> ?PR?_DISPLAY?SMG_123
+
+?PR?_DISPLAY?SMG_123
+  +--> ?CO?SMG_123
+  +--> ?PR?_DELAY?SMG_123
+
+
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2019  22:14:59  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  smg_123 (SMG_123)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SMG_123
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:018AH         PUBLIC        table
+  D:00A8H         PUBLIC        IE
+  C:015AH         PUBLIC        _delay
+  D:00B8H         PUBLIC        IP
+  C:0178H         PUBLIC        main
+  B:00A0H.1       PUBLIC        dula
+  B:00A0H.0       PUBLIC        wela
+  D:0008H         PUBLIC        bai
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:0009H         PUBLIC        shi
+  D:000AH         PUBLIC        ge
+  D:000BH         PUBLIC        shu
+  C:011FH         PUBLIC        _separate
+  D:00C8H         PUBLIC        T2CON
+  C:00E4H         PUBLIC        _display
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0178H         LINE#         23
+  C:0178H         LINE#         24
+  C:0178H         LINE#         25
+  C:017FH         LINE#         26
+  C:017FH         LINE#         27
+  C:017FH         LINE#         28
+  C:0188H         LINE#         29
+  -------         ENDPROC       MAIN
+  -------         PROC          L?0015
+  -------         ENDPROC       L?0015
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        z
+  -------         DO            
+  D:0006H         SYMBOL        a
+  D:0004H         SYMBOL        b
+  -------         ENDDO         
+  C:015AH         LINE#         31
+  C:015AH         LINE#         32
+  C:015AH         LINE#         34
+  C:0163H         LINE#         35
+  C:0177H         LINE#         36
+  -------         ENDPROC       _DELAY
+  -------         PROC          _DISPLAY
+  D:0007H         SYMBOL        bai
+  D:0002H         SYMBOL        shi
+  D:0003H         SYMBOL        ge
+  C:00E4H         LINE#         37
+  C:00E6H         LINE#         38
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/11/2019  22:14:59  PAGE 3
+
+
+  C:00E6H         LINE#         42
+  C:00E8H         LINE#         43
+  C:00EFH         LINE#         44
+  C:00F1H         LINE#         45
+  C:00F3H         LINE#         46
+  C:00F6H         LINE#         47
+  C:00F6H         LINE#         48
+  C:00F9H         LINE#         52
+  C:00FBH         LINE#         53
+  C:00FFH         LINE#         54
+  C:0101H         LINE#         55
+  C:0103H         LINE#         56
+  C:0106H         LINE#         57
+  C:0106H         LINE#         58
+  C:0109H         LINE#         62
+  C:010BH         LINE#         63
+  C:010FH         LINE#         64
+  C:0111H         LINE#         65
+  C:0113H         LINE#         66
+  C:0116H         LINE#         67
+  C:0118H         LINE#         68
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          _SEPARATE
+  D:0002H         SYMBOL        num
+  C:011FH         LINE#         70
+  C:0123H         LINE#         71
+  C:0123H         LINE#         73
+  C:012CH         LINE#         74
+  C:0146H         LINE#         75
+  C:0153H         LINE#         76
+  -------         ENDPROC       _SEPARATE
+  -------         ENDMOD        SMG_123
+
+  -------         MODULE        ?C?UIDIV
+  C:008FH         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+Program Size: data=14.0 xdata=0 code=415
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

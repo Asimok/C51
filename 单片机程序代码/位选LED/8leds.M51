@@ -1,0 +1,93 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/21/2019  11:16:28  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL 4\C51\BIN\BL51.EXE 8leds.obj TO 8leds RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  8leds.obj (8LEDS)
+  D:\KEIL 4\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  8leds (8LEDS)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001BH     UNIT         ?PR?DELAY?8LEDS
+            CODE    001EH     0015H     UNIT         ?PR?MAIN?8LEDS
+            CODE    0033H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   8leds (8LEDS)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?8LEDS
+
+?PR?MAIN?8LEDS
+  +--> ?PR?DELAY?8LEDS
+
+
+
+SYMBOL TABLE OF MODULE:  8leds (8LEDS)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        8LEDS
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0003H         PUBLIC        delay
+  C:001EH         PUBLIC        main
+  B:00A0H.0       PUBLIC        dula
+  B:00A0H.1       PUBLIC        wela
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/21/2019  11:16:28  PAGE 2
+
+
+  B:00B0H.0       PUBLIC        led
+  -------         PROC          DELAY
+  -------         DO            
+  D:0006H         SYMBOL        x
+  D:0004H         SYMBOL        b
+  -------         ENDDO         
+  C:0003H         LINE#         7
+  C:0003H         LINE#         8
+  C:0003H         LINE#         10
+  C:0007H         LINE#         11
+  C:001DH         LINE#         13
+  -------         ENDPROC       DELAY
+  -------         PROC          MAIN
+  C:001EH         LINE#         14
+  C:001EH         LINE#         15
+  C:001EH         LINE#         16
+  C:0020H         LINE#         21
+  C:0022H         LINE#         22
+  C:0025H         LINE#         23
+  C:0027H         LINE#         28
+  C:0029H         LINE#         29
+  C:002CH         LINE#         30
+  C:002EH         LINE#         31
+  C:0031H         LINE#         35
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        8LEDS
+
+Program Size: data=9.0 xdata=0 code=63
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

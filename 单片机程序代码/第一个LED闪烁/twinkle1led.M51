@@ -1,0 +1,87 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/24/2019  13:10:15  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL 4\C51\BIN\BL51.EXE twinkle1led.obj TO twinkle1led
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  twinkle1led.obj (TWINKLE1LED)
+  D:\KEIL 4\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  twinkle1led (TWINKLE1LED)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     001EH     UNIT         ?PR?_DELAY?TWINKLE1LED
+            CODE    0021H     0016H     UNIT         ?PR?MAIN?TWINKLE1LED
+            CODE    0037H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   twinkle1led (TWINKLE1LED)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?TWINKLE1LED
+
+?PR?MAIN?TWINKLE1LED
+  +--> ?PR?_DELAY?TWINKLE1LED
+
+
+
+SYMBOL TABLE OF MODULE:  twinkle1led (TWINKLE1LED)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TWINKLE1LED
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  C:0003H         PUBLIC        _delay
+  C:0021H         PUBLIC        main
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        x
+  -------         DO            
+  D:0006H         SYMBOL        a
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/24/2019  13:10:15  PAGE 2
+
+
+  D:0004H         SYMBOL        b
+  -------         ENDDO         
+  C:0003H         LINE#         3
+  C:0003H         LINE#         4
+  C:0003H         LINE#         6
+  C:000CH         LINE#         7
+  C:0020H         LINE#         8
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  C:0021H         LINE#         10
+  C:0021H         LINE#         11
+  C:0021H         LINE#         12
+  C:0021H         LINE#         13
+  C:0021H         LINE#         14
+  C:0024H         LINE#         15
+  C:002BH         LINE#         16
+  C:002EH         LINE#         17
+  C:0035H         LINE#         18
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        TWINKLE1LED
+
+Program Size: data=9.0 xdata=0 code=67
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

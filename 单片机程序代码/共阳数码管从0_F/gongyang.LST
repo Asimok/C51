@@ -1,0 +1,63 @@
+C51 COMPILER V9.01   GONGYANG                                                              03/29/2019 15:52:20 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE GONGYANG
+OBJECT MODULE PLACED IN gongyang.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE gongyang.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          共阳数码管显示0~F 间隔一秒
+   3          注意将排线接到共阳数码管 
+   4          */
+   5          
+   6          #include "reg52.h"
+   7          #define ui unsigned int
+   8          /*------------------------------------------------
+   9                             查表表格
+  10          ------------------------------------------------*/
+  11          unsigned char code table[]={    0xc0,0xf9,0xa4,0xb0,
+  12                                                                                                                                  0x99,0x92,0x82,0xf8,
+  13                                                                                                                                          0x80,0x90,0x88,0x83,
+  14                                                                                                                                          0xc6,0xa1,0x86,0x8e
+  15                                                            }       ;
+  16                                                          
+  17          
+  18          void delay(ui z)
+  19          {
+  20   1          ui a,b;
+  21   1          for(a=z;a>0;a--)
+  22   1              for(b=110;b>0;b--);
+  23   1      } 
+  24          
+  25          void main()
+  26          {
+  27   1        ui i;
+  28   1              while(1)
+  29   1              {
+  30   2      
+  31   2              for(i=0;i<16;i++)   
+  32   2                  {
+  33   3                       delay(1000);
+  34   3                           P0=table[i];
+  35   3                               //1001 0000
+  36   3                              // P0=0xc0;
+  37   3                  }
+  38   2      
+  39   2              }
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     60    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

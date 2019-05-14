@@ -1,0 +1,24 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\程序代码\中间两个数码管显示字母或者数字\zhongjian.uvproj
+Project File Date:  03/29/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+compiling zhongjian.c...
+linking...
+Program Size: data=9.0 xdata=0 code=98
+creating hex file from "zhongjian"...
+"zhongjian" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling zhongjian.c...
+linking...
+Program Size: data=9.0 xdata=0 code=102
+creating hex file from "zhongjian"...
+"zhongjian" - 0 Error(s), 0 Warning(s).

@@ -1,0 +1,62 @@
+C51 COMPILER V9.01   TIMER0_LED                                                            04/11/2019 22:00:18 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE TIMER0_LED
+OBJECT MODULE PLACED IN timer0_led.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE timer0_led.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          定时器0实现 定时500ms 使LED灯亮灭
+   3          使用12MHZ晶振
+   4          */
+   5          #include "reg52.h"
+   6          unsigned char num=0;
+   7          sbit led=P0^0;
+   8          void inittimer0();
+   9          void main()
+  10          {
+  11   1          led=0; //初始状态 led灭
+  12   1          inittimer0();
+  13   1          while(1)
+  14   1          {
+  15   2              if(num==10)
+  16   2              {
+  17   3                  num=0; //中断10次 500ms 重新计数 Num清零
+  18   3                  led=~led;
+  19   3              }
+  20   2          }
+  21   1      }
+  22          void inittimer0()
+  23          {
+  24   1      
+  25   1          TMOD=0X01;
+  26   1          TH0=(65536-50000)/256;  //定时50ms
+  27   1          TL0=(65536-50000)%256;
+  28   1      
+  29   1          EA=1; //总中断
+  30   1          ET0=1;  //T0中断
+  31   1          TR0=1;  //开启TO
+  32   1      
+  33   1      }
+  34          void timer0() interrupt 1
+  35          {
+  36   1          TH0=(65536-50000)/256;  //定时50ms
+  37   1          TL0=(65536-50000)%256;
+  38   1          num++;
+  39   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

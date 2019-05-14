@@ -1,0 +1,3 @@
+"timer0_led.obj" 
+TO "timer0_led" 
+RAMSIZE(256) 

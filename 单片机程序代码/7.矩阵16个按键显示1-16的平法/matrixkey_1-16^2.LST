@@ -1,0 +1,286 @@
+C51 COMPILER V9.01   MATRIXKEY_1_16_2                                                      04/18/2019 14:23:25 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MATRIXKEY_1_16_2
+OBJECT MODULE PLACED IN matrixkey_1-16^2.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE matrixkey_1-16^2.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          逐行扫描
+   3          矩阵按键的延时抖动，以及消除抖动
+   4          最后三个数码管显示1-16的平方
+   5          平方表 
+   6          1 4 9 16 
+   7          25 36 49 64 
+   8          81 100 121 144 
+   9          169 196 225 256
+  10          */
+  11          #include "reg52.h"
+  12          /*------------------------------------------------
+  13                                            共阴数码管 0-F
+  14          ------------------------------------------------*/
+  15          unsigned char code table[] = { 0x3f,0x06,0x5b,0x4f,
+  16          0x66,0x6d,0x7d,0x07,
+  17          0x7f,0x6f,0x77,0x7c,
+  18          0x39,0x5e,0x79,0x71
+  19          };
+  20          #define uc unsigned char 
+  21          #define ui unsigned int 
+  22          sbit dula = P2 ^ 0;
+  23          sbit wela = P2 ^ 1;
+  24          uc temp;
+  25          ui bai,shi, ge;
+  26          ui keyscan();
+  27          void delay(ui);
+  28          void display(ui);
+  29          void main()
+  30          {
+  31   1      
+  32   1              while (1)
+  33   1              {
+  34   2      
+  35   2                      display(keyscan());
+  36   2              }
+  37   1      
+  38   1      }
+  39          
+  40          void display(ui num)
+  41          {
+  42   1              
+  43   1              //分离3位数
+  44   1          bai=num/100;
+  45   1          shi=num%100/10;
+  46   1          ge=num%100%10;
+  47   1      
+  48   1              P0 = 0xfe; //第一个数码管 0111 1111 显示 百位
+  49   1              wela = 1; //先送位码
+  50   1              wela = 0;
+  51   1              dula = 1;
+  52   1              P0 = table[bai];
+  53   1              dula = 0;
+  54   1              delay(1);
+  55   1      
+C51 COMPILER V9.01   MATRIXKEY_1_16_2                                                      04/18/2019 14:23:25 PAGE 2   
+
+  56   1      
+  57   1              P0 = 0xfd; //第二个数码管 1011 1111 显示 十位
+  58   1              wela = 1;
+  59   1              wela = 0;
+  60   1              dula = 1;
+  61   1              P0 = table[shi];
+  62   1              dula = 0;
+  63   1              delay(1);
+  64   1      
+  65   1      
+  66   1              P0 = 0xfb;      //第三个数码管 1101 1111 显示  个位
+  67   1              wela = 1;
+  68   1              wela = 0; 
+  69   1              dula = 1;
+  70   1              P0 = table[ge];
+  71   1              dula = 0;
+  72   1              delay(1);
+  73   1      }
+  74          ui keyscan()
+  75          {
+  76   1      ui shu;
+  77   1              //高四位 列 ； 低四位 行
+  78   1                      //第一列………………第一行
+  79   1                      //1111 1111
+  80   1              P3 = 0xfe;//选中第一行 1111 1110
+  81   1              //高四位做输入要先被拉成高电平
+  82   1              temp = P3;
+  83   1              temp = temp & 0xf0;//判断有没有某一列按键被按下
+  84   1              while (temp != 0xf0)//P3的值发生改变说明有按键被按下
+  85   1              {
+  86   2                      delay(10);//通过延时消除抖动
+  87   2                      while (temp != 0xf0)//再次判断
+  88   2                      {
+  89   3                              temp = P3;
+  90   3                              switch(temp) {
+  91   4      
+  92   4                                      case 0x7e://选中（1，1）
+  93   4                              
+  94   4                                      shu=1;
+  95   4                                              break;
+  96   4                                      
+  97   4                                      case 0xbe://选中（1，2）
+  98   4                                      
+  99   4                                      shu=4;
+ 100   4                                              break;
+ 101   4                                      
+ 102   4                                      case 0xde://选中（1，3）
+ 103   4                                      
+ 104   4                                      shu=9;
+ 105   4                                              break;
+ 106   4                                      
+ 107   4                                      case 0xee://选中（1，4）
+ 108   4                                      
+ 109   4                                      shu=16;
+ 110   4                                              break;
+ 111   4                                      
+ 112   4                              //      default: break;
+ 113   4                              }
+ 114   3                                      while (temp != 0xf0)
+ 115   3                                              {
+ 116   4                                                      temp = P3;
+ 117   4                                                      temp = temp & 0xf0;
+C51 COMPILER V9.01   MATRIXKEY_1_16_2                                                      04/18/2019 14:23:25 PAGE 3   
+
+ 118   4                                                      }
+ 119   3                      }
+ 120   2              }
+ 121   1      /////////////////////////////////////////
+ 122   1              P3 = 0xfd;//选中第二行 1111 1101
+ 123   1              temp = P3;
+ 124   1              temp = temp & 0xf0;//判断有没有某一列按键被按下
+ 125   1              while (temp != 0xf0)//P3的值发生改变说明有按键被按下
+ 126   1              {
+ 127   2                      delay(10);//通过延时消除抖动
+ 128   2                      while (temp != 0xf0)//再次判断
+ 129   2                      {
+ 130   3                              temp = P3;
+ 131   3                              switch(temp) {
+ 132   4      
+ 133   4                                      case 0x7d://选中（2，1）
+ 134   4                                      
+ 135   4                                      shu=25;
+ 136   4                                              break;
+ 137   4                                      
+ 138   4                                      case 0xbd://选中（2，2）
+ 139   4                                      
+ 140   4                                      shu=36;
+ 141   4                                              break;
+ 142   4                                      
+ 143   4                                      case 0xdd://选中（2，3）
+ 144   4                                      
+ 145   4                                      shu=49;
+ 146   4                                              break;
+ 147   4                                      
+ 148   4                                      case 0xed://选中（2，4）
+ 149   4                                      
+ 150   4                                      shu=64;
+ 151   4                                              break;
+ 152   4                                      
+ 153   4                              //              default: break;
+ 154   4                              }
+ 155   3                                      while (temp != 0xf0)
+ 156   3                                              {
+ 157   4                                                      temp = P3;
+ 158   4                                                      temp = temp & 0xf0;
+ 159   4                                                      }
+ 160   3                      }
+ 161   2              }
+ 162   1              /////////////////////////////////////////
+ 163   1              P3 = 0xfb;//选中第三行 1111 1011
+ 164   1              temp = P3;
+ 165   1              temp = temp & 0xf0;//判断有没有某一列按键被按下
+ 166   1              while (temp != 0xf0)//P3的值发生改变说明有按键被按下
+ 167   1              {
+ 168   2                      delay(10);//通过延时消除抖动
+ 169   2                      while (temp != 0xf0)//再次判断
+ 170   2                      {
+ 171   3                              temp = P3;
+ 172   3                              switch(temp) {
+ 173   4      
+ 174   4                                      case 0x7b://选中（3，1）
+ 175   4                                      
+ 176   4                                              shu=81;
+ 177   4                                              break;
+ 178   4                                      
+ 179   4                                      case 0xbb://选中（3，2）
+C51 COMPILER V9.01   MATRIXKEY_1_16_2                                                      04/18/2019 14:23:25 PAGE 4   
+
+ 180   4                                      
+ 181   4                                      shu=100;
+ 182   4                                              break;
+ 183   4                                      
+ 184   4                                      case 0xdb://选中（3，3）
+ 185   4                                      
+ 186   4                                      shu=121;
+ 187   4                                              break;
+ 188   4                                      
+ 189   4                                      case 0xeb://选中（3，4）
+ 190   4                                      
+ 191   4                                      shu=144;
+ 192   4                                              break;
+ 193   4                                      
+ 194   4                              //              default: break;
+ 195   4                              }
+ 196   3                                      while (temp != 0xf0)
+ 197   3                                              {
+ 198   4                                                      temp = P3;
+ 199   4                                                      temp = temp & 0xf0;
+ 200   4                                                      }
+ 201   3                      }
+ 202   2              }
+ 203   1      
+ 204   1              /////////////////////////////////////////
+ 205   1              P3 = 0xf7;//选中第四行 1111 0111
+ 206   1              temp = P3;
+ 207   1              temp = temp & 0xf0;//判断有没有某一列按键被按下
+ 208   1              while (temp != 0xf0)//P3的值发生改变说明有按键被按下
+ 209   1              {
+ 210   2                      delay(10);//通过延时消除抖动
+ 211   2                      while (temp != 0xf0)//再次判断
+ 212   2                      {
+ 213   3                              temp = P3;
+ 214   3                              switch(temp) {
+ 215   4      
+ 216   4                                      case 0x77://选中（4，1）
+ 217   4                                      {
+ 218   5                                      shu=169;
+ 219   5                                              break;
+ 220   5                                      }
+ 221   4                                      case 0xb7://选中（4，2）
+ 222   4                                      {
+ 223   5                                                                      shu=196;
+ 224   5                                              break;
+ 225   5                                      }
+ 226   4                                      case 0xd7://选中（4，3）
+ 227   4                                      {
+ 228   5                                      shu=225;
+ 229   5                                              break;
+ 230   5                                      }
+ 231   4                                      case 0xe7://选中（4，4）
+ 232   4                                      {
+ 233   5                                              shu=256;
+ 234   5                                              break;
+ 235   5                                      }
+ 236   4                              //              default: break;
+ 237   4                              
+ 238   4                              }
+ 239   3                                      while (temp != 0xf0)
+ 240   3                                              {
+ 241   4                                                      temp = P3;
+C51 COMPILER V9.01   MATRIXKEY_1_16_2                                                      04/18/2019 14:23:25 PAGE 5   
+
+ 242   4                                                      temp = temp & 0xf0;
+ 243   4                                                      }
+ 244   3                      }
+ 245   2              }
+ 246   1              return shu;
+ 247   1      
+ 248   1      
+ 249   1      }
+ 250          void delay(ui a)
+ 251          {
+ 252   1              ui b, c;
+ 253   1              for (b = a; b > 0; b--)
+ 254   1                      for (c = 110; c > 0; c--);
+ 255   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    552    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

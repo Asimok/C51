@@ -1,0 +1,18 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\单片机程序代码\共阳数码管0-F 下降沿触发\int0_IT1.uvproj
+Project File Date:  04/04/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+Target has no object modules
+Target not created
+Build target 'Target 1'
+compiling int0_IT1.c...
+linking...
+Program Size: data=9.0 xdata=0 code=108
+creating hex file from "int0_IT1"...
+"int0_IT1" - 0 Error(s), 0 Warning(s).

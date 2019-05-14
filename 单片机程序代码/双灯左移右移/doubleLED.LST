@@ -1,0 +1,79 @@
+C51 COMPILER V9.01   DOUBLELED                                                             03/24/2019 13:19:13 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE DOUBLELED
+OBJECT MODULE PLACED IN doubleLED.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE doubleLED.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #define uc unsigned int
+   3          
+   4          void delay(uc a)
+   5          {
+   6   1              uc b,c;
+   7   1              for(b=a;b>0;b--)
+   8   1                      for(c=110;c>0;c--);
+   9   1      }
+  10          
+  11          void main()
+  12          {
+  13   1              uc i;//用作循环
+  14   1              uc temp;//中间变量
+  15   1      
+  16   1              while(1)
+  17   1              {
+  18   2                      temp=0XFC; //1111 1100  第一二个灯亮
+  19   2                      P1=temp;
+  20   2                      for(i=0;i<8;i++)
+  21   2                      {
+  22   3                              //移动八位
+  23   3                              delay(5000);
+  24   3                              temp=temp<<1; //1111 1000 左移一位
+  25   3                              temp=temp|0x01;  //位或 1111 1001 保证每次只亮两个灯
+  26   3                              P1=temp;//不直接用P1 防止闪烁
+  27   3                      }
+  28   2                      //循环8次后 0000 0000
+  29   2                      //从左端开始右移
+  30   2                      //0011 1111
+  31   2                      temp=0x3f;
+  32   2                      P1=temp;
+  33   2      
+  34   2                      for(i=0;i<8;i++)
+  35   2                      {
+  36   3                              //移动八位
+  37   3                              delay(5000);
+  38   3                              temp=temp>>1; //0001 1111 左移一位
+  39   3                              temp=temp|0x80;  //位或 1001 1111 保证每次只亮两个灯
+  40   3                              P1=temp;//不直接用P1 防止闪烁
+  41   3                      }
+  42   2      
+  43   2                       for(i=0;i<3;i++)   
+  44   2                  //闪烁三次        
+  45   2                       {
+  46   3                                P1=0xff;      //全灭
+  47   3                                      delay(5000);
+  48   3                                P1=0x00;      //全亮
+  49   3                                      delay(5000);
+  50   3                       }               
+  51   2              }
+  52   1      
+  53   1      
+  54   1      }
+
+C51 COMPILER V9.01   DOUBLELED                                                             03/24/2019 13:19:13 PAGE 2   
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    133    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

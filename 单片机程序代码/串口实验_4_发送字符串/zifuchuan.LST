@@ -1,0 +1,77 @@
+C51 COMPILER V9.01   ZIFUCHUAN                                                             05/05/2019 16:11:46 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE ZIFUCHUAN
+OBJECT MODULE PLACED IN zifuchuan.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE zifuchuan.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1                                                     /*
+   2           * 单片机发送字符串 波特率 9600Mhz SMOD=0 fosc=11.0592Mhz
+   3           * (SMOD=1 时 PCON=0X80 要写上)
+   4           *计算初值
+   5           *波特率=（2^SMOD/32）*(fosc/((256-X)*12))
+   6           *
+   7           * */
+   8          #include "reg52.h"
+   9          #define  uc unsigned  char
+  10          //初始化串口
+  11          void init()
+  12          {
+  13   1      
+  14   1          TMOD=0x20;//用定时器1 方式2 自动重装初值 M1=1 M0=0
+  15   1          TH1=253;//计算初值  波特率9600bps时
+  16   1          TL1=253;//低八位可以不设置
+  17   1          TR1=1;//启动定时器T1
+  18   1      
+  19   1          SM0=0;//使用SCON方式一
+  20   1          SM1=1;
+  21   1          REN=1;//启动串口接收数据
+  22   1      
+  23   1          //SCON结构 SM1 SM1 SM2 REN TB8 RB8 TI RI
+  24   1          //也可以 SCON=0X50
+  25   1      
+  26   1          //使用查询方式
+  27   1      
+  28   1      }
+  29          void sendbyte(uc date)
+  30          {
+  31   1          //发送单个字符给PC机
+  32   1          SBUF=date;
+  33   1          while (!TI);//TI=0 时一直等待
+  34   1          TI=0;//手动将发送中断标志位清零
+  35   1      }
+  36          void sendstr(uc *s)
+  37          {
+  38   1          while (*s!='\0')
+  39   1          {
+  40   2              sendbyte(*s);
+  41   2              s++;
+  42   2          }
+  43   1      }
+  44          
+  45          void main()
+  46          {
+  47   1          init();
+  48   1          sendstr("测试字符串");
+  49   1          while (1);
+  50   1      }
+  51          
+  52          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.01   ZIFUCHUAN                                                             05/05/2019 16:11:46 PAGE 2   
+
+   CODE SIZE        =     59    ----
+   CONSTANT SIZE    =     11    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,101 @@
+C51 COMPILER V9.01   SMG_123                                                               04/11/2019 22:14:59 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SMG_123
+OBJECT MODULE PLACED IN smg_123.OBJ
+COMPILER INVOKED BY: D:\keil 4\C51\BIN\C51.EXE smg_123.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*
+   2          后三个数码管显示123 
+   3          延时函数实现
+   4          */
+   5          #include"reg52.h"
+   6          sbit wela=P2^0;
+   7          sbit dula=P2^1;
+   8          #define ui unsigned int
+   9          #define uc unsigned char
+  10          uc  bai,shi,ge;
+  11          /*------------------------------------------------
+  12                            共阴数码管 0-F
+  13          ------------------------------------------------*/
+  14          unsigned char code table[]={    0x3f,0x06,0x5b,0x4f,
+  15                                                                          0x66,0x6d,0x7d,0x07,
+  16                                                                          0x7f,0x6f,0x77,0x7c,
+  17                                                                          0x39,0x5e,0x79,0x71
+  18                                                            }       ;
+  19          ui shu =123;                        
+  20          void delay(ui z);
+  21          void display(uc bai,uc shi,uc ge);
+  22          void    separate(ui);
+  23          void main()
+  24          {
+  25   1          separate(shu);
+  26   1          while(1)
+  27   1          {
+  28   2               display( bai, shi, ge);
+  29   2          }
+  30   1      }
+  31          void delay(ui z)
+  32          {
+  33   1          ui a,b;
+  34   1          for(a=z;a>0;a--)
+  35   1              for(b=110;b>0;b--);
+  36   1      } 
+  37          void display(uc bai,uc shi,uc ge)
+  38          {
+  39   1      
+  40   1      //第六个数码管 1111 1011 显示 3 百位
+  41   1         
+  42   1          dula=1;
+  43   1          P0=table[bai];
+  44   1          dula=0;
+  45   1               wela=1;
+  46   1          P0=0xdf;
+  47   1          wela=0;
+  48   1          delay(1);
+  49   1      
+  50   1      //第七个数码管 1111 1101 显示 5 十位
+  51   1         
+  52   1          dula=1;
+  53   1          P0=table[shi];
+  54   1          dula=0;
+  55   1               wela=1;
+C51 COMPILER V9.01   SMG_123                                                               04/11/2019 22:14:59 PAGE 2   
+
+  56   1          P0=0xbf;
+  57   1          wela=0;
+  58   1          delay(1);
+  59   1      
+  60   1          //第八个数码管 1111 1110 显示 7 个位 
+  61   1          
+  62   1          dula=1;
+  63   1          P0=table[ge];
+  64   1           dula=0;
+  65   1               wela=1;
+  66   1          P0=0x7f;
+  67   1          wela=0;
+  68   1          delay(1);
+  69   1      }
+  70          void separate(ui num)
+  71          {
+  72   1      //分离3位数
+  73   1          bai=num/100;
+  74   1          shi=num%100/10;
+  75   1          ge=num %10;
+  76   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    166    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
